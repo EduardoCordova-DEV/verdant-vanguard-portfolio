@@ -13,6 +13,12 @@ const projectsData: Record<string, any> = {
     longDescription: "Desarrollé una plataforma de e-commerce full-stack que permite a los usuarios navegar por productos, agregar items al carrito, y completar compras de manera segura. Incluye un panel de administración completo para gestionar productos, órdenes y usuarios. La aplicación cuenta con autenticación segura, integración con Stripe para pagos, y un diseño responsive optimizado para dispositivos móviles.",
     technologies: ["React", "Node.js", "PostgreSQL", "Stripe", "JWT", "Docker"],
     image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=1200&auto=format&fit=crop",
+    gallery: [
+      "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop"
+    ],
     github: "https://github.com/usuario/proyecto-1",
     demo: "https://proyecto-1.com",
     date: "2024",
@@ -37,6 +43,12 @@ const projectsData: Record<string, any> = {
     longDescription: "Creé un dashboard analítico completo que permite visualizar datos complejos de manera intuitiva. Incluye gráficos interactivos, filtros dinámicos, y actualización en tiempo real de las métricas. La aplicación está optimizada para mostrar grandes volúmenes de datos sin comprometer el rendimiento.",
     technologies: ["React", "TypeScript", "D3.js", "Tailwind", "WebSocket", "Redux"],
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&fit=crop",
+    gallery: [
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1543286386-713bdd548da4?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&auto=format&fit=crop"
+    ],
     github: "https://github.com/usuario/proyecto-2",
     demo: "https://proyecto-2.com",
     date: "2024",
@@ -61,6 +73,12 @@ const projectsData: Record<string, any> = {
     longDescription: "Desarrollé una aplicación social completa con funcionalidades de red social modernas. Incluye sistema de publicaciones con soporte multimedia, chat en tiempo real, notificaciones push, y sistema de seguidores. La aplicación está optimizada para ofrecer una experiencia fluida y rápida.",
     technologies: ["React", "Firebase", "Socket.io", "Redux", "PWA", "Cloudinary"],
     image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200&auto=format&fit=crop",
+    gallery: [
+      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&auto=format&fit=crop"
+    ],
     github: "https://github.com/usuario/proyecto-3",
     demo: "https://proyecto-3.com",
     date: "2023",
@@ -170,6 +188,27 @@ const ProjectDetail = () => {
                       </li>
                     ))}
                   </ul>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="pt-6">
+                  <h2 className="text-2xl font-bold mb-4">Galería de Imágenes</h2>
+                  <div className="grid grid-cols-2 gap-4">
+                    {project.gallery.map((img: string, index: number) => (
+                      <div 
+                        key={index} 
+                        className="relative overflow-hidden rounded-lg aspect-video group cursor-pointer"
+                      >
+                        <img 
+                          src={img} 
+                          alt={`${project.title} screenshot ${index + 1}`}
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-background/0 group-hover:bg-background/10 transition-colors duration-300"></div>
+                      </div>
+                    ))}
+                  </div>
                 </CardContent>
               </Card>
             </div>
