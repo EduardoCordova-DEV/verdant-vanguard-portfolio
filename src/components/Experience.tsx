@@ -1,40 +1,48 @@
-import { Briefcase, MapPin } from "lucide-react";
-import { Card } from "./ui/card";
-import { Badge } from "./ui/badge";
+import { Briefcase, MapPin } from 'lucide-react'
+import { Card } from './ui/card'
+import { Badge } from './ui/badge'
 
 const Experience = () => {
   const experiences = [
     {
-      position: "Desarrollador Frontend Senior",
-      company: "Empresa Tech",
-      location: "Remoto",
-      period: "2023 - Presente",
-      description:
-        "Liderando el desarrollo de interfaces de usuario modernas con React y TypeScript. Implementación de mejores prácticas y mentoría del equipo junior.",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Next.js"],
+      position: 'Desarrollador de Software',
+      company: (
+        <h2>
+          <a
+            href="https://www.bentho.com.mx/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Bentho Automation
+          </a>
+        </h2>
+      ),
+      location: 'San Luis Potosí, México',
+      period: '2022 - 2024',
+      description: (
+        <span>
+          Desarrollo e implementación de aplicaciones web y de escritorio a
+          medida, optimizando procesos internos y ofreciendo soluciones
+          tecnológicas eficientes para empresas privadas.
+        </span>
+      ),
+      technologies: [
+        'HTML',
+        'CSS',
+        'Laravel',
+        '.NET',
+        'C#',
+        'JavaScript',
+        'Angular',
+      ],
     },
-    {
-      position: "Desarrollador Web Full Stack",
-      company: "Startup Innovadora",
-      location: "Ciudad, País",
-      period: "2021 - 2023",
-      description:
-        "Desarrollo de aplicaciones web completas desde el frontend hasta el backend. Colaboración directa con diseñadores y product managers.",
-      technologies: ["React", "Node.js", "MongoDB", "Express"],
-    },
-    {
-      position: "Desarrollador Frontend Junior",
-      company: "Agencia Digital",
-      location: "Ciudad, País",
-      period: "2020 - 2021",
-      description:
-        "Construcción de sitios web responsivos y landing pages para diversos clientes. Implementación de diseños en código limpio y optimizado.",
-      technologies: ["HTML", "CSS", "JavaScript", "Vue.js"],
-    },
-  ];
+  ]
 
   return (
-    <section id="experiencia" className="py-24 px-4 bg-gradient-to-b from-muted/20 to-background">
+    <section
+      id="experiencia"
+      className="py-24 px-4 bg-gradient-to-b from-muted/20 to-background"
+    >
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -66,8 +74,12 @@ const Experience = () => {
                 <div className="flex-1 space-y-3">
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2">
                     <div>
-                      <h3 className="text-2xl font-bold mb-1">{exp.position}</h3>
-                      <p className="text-lg text-foreground/80 font-medium">{exp.company}</p>
+                      <h3 className="text-2xl font-bold mb-1">
+                        {exp.position}
+                      </h3>
+                      <p className="text-lg text-foreground/80 font-medium">
+                        {exp.company}
+                      </p>
                     </div>
                     <div className="flex flex-col items-start md:items-end gap-1">
                       <span className="text-sm text-primary font-mono bg-primary/10 px-3 py-1 rounded-full">
@@ -80,7 +92,9 @@ const Experience = () => {
                     </div>
                   </div>
 
-                  <p className="text-muted-foreground leading-relaxed">{exp.description}</p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {exp.description}
+                  </p>
 
                   <div className="flex flex-wrap gap-2 pt-2">
                     {exp.technologies.map((tech, techIndex) => (
@@ -100,7 +114,7 @@ const Experience = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Experience;
+export default Experience

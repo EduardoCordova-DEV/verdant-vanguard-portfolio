@@ -1,28 +1,30 @@
-import { GraduationCap, Award } from "lucide-react";
-import { Card } from "./ui/card";
+import { GraduationCap, Award } from 'lucide-react'
+import { Card } from './ui/card'
 
 const Education = () => {
   const educationData = [
     {
-      degree: "Ingeniería en Sistemas / Licenciatura en Informática",
-      institution: "Universidad / Institución",
-      period: "2018 - 2022",
-      description: "Formación integral en desarrollo de software, algoritmos y estructuras de datos.",
+      degree: 'Ingeniería en Sistemas Inteligentes',
+      institution: 'Universidad Autónoma de San Luis Potosí / UASLP',
+      period: '2018 - 2023',
+      description:
+        'Formación integral en Ciencias de la Computación e Inteligencia Artificial',
     },
-    {
-      degree: "Desarrollo Web Full Stack",
-      institution: "Bootcamp / Plataforma Online",
-      period: "2022",
-      description: "Especialización en tecnologías modernas: React, Node.js, bases de datos y deployment.",
-    },
-  ];
+    // {
+    //   degree: 'React Dev',
+    //   institution: 'React: De cero a experto - Edición 2025 / Udemy',
+    //   period: '2025',
+    //   description:
+    //     'Context API, MERN, Hooks, Firestore, JWT, Testing, Autenticaciones, Despliegues, AI, CRUD, Logs, MUI, Multiple Routers..',
+    // },
+  ]
 
   const certifications = [
-    "Certificación en React Avanzado",
-    "TypeScript Professional",
-    "Cloud Architecture",
-    "UI/UX Design Fundamentals",
-  ];
+    // 'Certificación en React Avanzado',
+    // 'TypeScript Professional',
+    // 'Cloud Architecture',
+    // 'UI/UX Design Fundamentals',
+  ]
 
   return (
     <section id="formacion" className="py-24 px-4 bg-background">
@@ -54,7 +56,9 @@ const Education = () => {
                       {edu.period}
                     </span>
                   </div>
-                  <p className="text-foreground/80 font-medium mb-2">{edu.institution}</p>
+                  <p className="text-foreground/80 font-medium mb-2">
+                    {edu.institution}
+                  </p>
                   <p className="text-muted-foreground">{edu.description}</p>
                 </div>
               </div>
@@ -63,28 +67,30 @@ const Education = () => {
         </div>
 
         {/* Certifications */}
-        <Card className="p-8 card-glow bg-card border-border">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-              <Award className="w-5 h-5 text-primary" />
-            </div>
-            <h3 className="text-2xl font-bold">Certificaciones</h3>
-          </div>
-          <div className="grid md:grid-cols-2 gap-3">
-            {certifications.map((cert, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-2 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors"
-              >
-                <div className="w-2 h-2 rounded-full bg-primary"></div>
-                <span className="text-foreground/90">{cert}</span>
+        {certifications && certifications.length > 0 && (
+          <Card className="p-8 card-glow bg-card border-border">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <Award className="w-5 h-5 text-primary" />
               </div>
-            ))}
-          </div>
-        </Card>
+              <h3 className="text-2xl font-bold">Certificaciones</h3>
+            </div>
+            <div className="grid md:grid-cols-2 gap-3">
+              {certifications.map((cert, index) => (
+                <div
+                  key={index}
+                  className="flex items-center gap-2 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors"
+                >
+                  <div className="w-2 h-2 rounded-full bg-primary"></div>
+                  <span className="text-foreground/90">{cert}</span>
+                </div>
+              ))}
+            </div>
+          </Card>
+        )}
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Education;
+export default Education
