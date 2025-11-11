@@ -60,7 +60,8 @@ const Experience = () => {
           {experiences.map((exp, index) => (
             <Card
               key={index}
-              className="p-6 md:p-8 card-glow bg-card border-border hover:border-primary/30 transition-all group"
+              className="p-6 md:p-8 card-glow bg-card border-border hover:border-primary/30 transition-all duration-300 hover:scale-105 group animate-fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="flex flex-col md:flex-row gap-6">
                 {/* Icon and timeline */}

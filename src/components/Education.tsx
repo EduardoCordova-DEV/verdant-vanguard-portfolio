@@ -46,7 +46,8 @@ const Education = () => {
           {educationData.map((edu, index) => (
             <Card
               key={index}
-              className="p-6 md:p-8 card-glow bg-card border-border hover:border-primary/30 transition-all"
+              className="p-6 md:p-8 card-glow bg-card border-border hover:border-primary/30 transition-all duration-300 hover:scale-105 animate-fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="flex flex-col md:flex-row md:items-start gap-4">
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -71,7 +72,7 @@ const Education = () => {
 
         {/* Certifications */}
         {certifications && certifications.length > 0 && (
-          <Card className="p-8 card-glow bg-card border-border">
+          <Card className="p-8 card-glow bg-card border-border hover:border-primary/30 transition-all duration-300 hover:scale-105 animate-fade-in">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                 <Award className="w-5 h-5 text-primary" />
