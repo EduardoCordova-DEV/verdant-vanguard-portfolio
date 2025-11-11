@@ -1,4 +1,9 @@
 import { Card } from './ui/card'
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from '@/components/ui/dialog'
 import { Code2, Bot, Disc3, SquareTerminal } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import profileImage from '@/assets/images/profile.jpg'
@@ -40,13 +45,29 @@ const About = () => {
             {t('about.title')} <span className="text-gradient">{t('about.titleHighlight')}</span>
           </h2>
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-8">
-            <div className="relative w-48 h-48 rounded-full overflow-hidden border-4 border-primary/20 card-glow">
-              <img 
-                src={profileImage} 
-                alt="Eduardo Cordova" 
-                className="w-full h-full object-cover"
-              />
-            </div>
+            <Dialog>
+              <DialogTrigger asChild>
+                <div className="relative w-48 h-48 rounded-full overflow-hidden border-4 border-primary/20 card-glow cursor-pointer group">
+                  <img 
+                    src={profileImage} 
+                    alt="Eduardo Cordova" 
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                    <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm">
+                      Click para ampliar
+                    </span>
+                  </div>
+                </div>
+              </DialogTrigger>
+              <DialogContent className="max-w-2xl">
+                <img 
+                  src={profileImage} 
+                  alt="Eduardo Cordova" 
+                  className="w-full h-auto rounded-lg"
+                />
+              </DialogContent>
+            </Dialog>
             <p className="text-muted-foreground text-lg max-w-2xl">
               {t('about.description')}
             </p>
@@ -57,7 +78,8 @@ const About = () => {
           {skills.map((skill, index) => (
             <Card
               key={index}
-              className="p-6 card-glow bg-card border-border hover:border-primary/30 transition-all group"
+              className="p-6 card-glow bg-card border-border hover:border-primary/30 transition-all duration-300 group hover:scale-105 animate-fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                 <skill.icon className="w-6 h-6 text-primary" />

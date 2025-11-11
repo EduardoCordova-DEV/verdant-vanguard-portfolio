@@ -67,7 +67,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <Card
               key={project.id}
-              className="group overflow-hidden border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-glow animate-fade-in"
+              className="group overflow-hidden border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-glow hover:scale-105 animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="relative overflow-hidden">

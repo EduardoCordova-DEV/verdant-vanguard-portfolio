@@ -1,7 +1,13 @@
+import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from '@/components/ui/dialog'
 import { ArrowLeft, Github, ExternalLink, Calendar, Users } from 'lucide-react'
 import Footer from '@/components/Footer'
 
@@ -242,17 +248,29 @@ const ProjectDetail = () => {
                       </h2>
                       <div className="grid grid-cols-2 gap-4">
                         {project.gallery.map((img: string, index: number) => (
-                          <div
-                            key={index}
-                            className="relative overflow-hidden rounded-lg aspect-video group cursor-pointer"
-                          >
-                            <img
-                              src={img}
-                              alt={`${project.title} screenshot ${index + 1}`}
-                              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                            />
-                            <div className="absolute inset-0 bg-background/0 group-hover:bg-background/10 transition-colors duration-300"></div>
-                          </div>
+                          <Dialog key={index}>
+                            <DialogTrigger asChild>
+                              <div className="relative overflow-hidden rounded-lg aspect-video group cursor-pointer">
+                                <img
+                                  src={img}
+                                  alt={`${project.title} screenshot ${index + 1}`}
+                                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                                  <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    Click para ampliar
+                                  </span>
+                                </div>
+                              </div>
+                            </DialogTrigger>
+                            <DialogContent className="max-w-4xl">
+                              <img
+                                src={img}
+                                alt={`${project.title} screenshot ${index + 1}`}
+                                className="w-full h-auto"
+                              />
+                            </DialogContent>
+                          </Dialog>
                         ))}
                       </div>
                     </CardContent>
