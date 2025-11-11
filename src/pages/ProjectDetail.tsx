@@ -3,11 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-} from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import { ArrowLeft, Github, ExternalLink, Calendar, Users } from 'lucide-react'
 import Footer from '@/components/Footer'
 
@@ -15,8 +11,23 @@ import productionLineImg from '../assets/images/production-line.jpeg'
 import hospitalDashboardImg from '../assets/images/hospital-dashboard.jpg'
 import benthoImg from '../assets/images/bentho.jpg'
 
+interface Project {
+  title: string
+  description: string
+  longDescription: React.ReactNode
+  technologies: string[]
+  image: string
+  gallery: string[]
+  github: string
+  demo: string
+  date: string
+  team: string
+  features: string[]
+  challenges: string[]
+}
+
 // Este objeto debería estar en un archivo separado para reutilizarlo
-const projectsData: Record<string, any> = {
+const projectsData: Record<string, Project> = {
   'gm-trazabilidad': {
     title: 'GM Trazabilidad',
     description:
@@ -253,7 +264,9 @@ const ProjectDetail = () => {
                               <div className="relative overflow-hidden rounded-lg aspect-video group cursor-pointer">
                                 <img
                                   src={img}
-                                  alt={`${project.title} screenshot ${index + 1}`}
+                                  alt={`${project.title} screenshot ${
+                                    index + 1
+                                  }`}
                                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                                 />
                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">

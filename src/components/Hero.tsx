@@ -6,7 +6,7 @@ import { useLanguage } from '@/contexts/LanguageContext'
 const Hero = () => {
   const { t } = useLanguage()
   const typedText = useTypewriter(t('hero.badge'), 80)
-  
+
   const socialLinks = [
     {
       icon: Github,
@@ -39,7 +39,8 @@ const Hero = () => {
 
           {/* Main heading */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
-            {t('hero.greeting')} <span className="text-gradient">{t('hero.name')}</span>
+            {t('hero.greeting')}{' '}
+            <span className="text-gradient">{t('hero.name')}</span>
           </h1>
 
           {/* Subtitle */}
