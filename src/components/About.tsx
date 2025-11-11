@@ -1,11 +1,11 @@
 import { Card } from './ui/card'
 import { Code2, Bot, Disc3, SquareTerminal } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
-import profileImage from '@/assets/images/profile.jpg'
+import profileImage from '@/assets/images/profile.png'
 
 const About = () => {
   const { t } = useLanguage()
-  
+
   const skills = [
     {
       icon: Code2,
@@ -37,13 +37,14 @@ const About = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            {t('about.title')} <span className="text-gradient">{t('about.titleHighlight')}</span>
+            {t('about.title')}{' '}
+            <span className="text-gradient">{t('about.titleHighlight')}</span>
           </h2>
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-8">
             <div className="relative w-48 h-48 rounded-full overflow-hidden border-4 border-primary/20 card-glow">
-              <img 
-                src={profileImage} 
-                alt="Eduardo Cordova" 
+              <img
+                src={profileImage}
+                alt="Eduardo Cordova"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -63,13 +64,17 @@ const About = () => {
                 <skill.icon className="w-6 h-6 text-primary" />
               </div>
               <h3 className="text-xl font-semibold mb-2">{skill.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{skill.description}</p>
+              <p className="text-muted-foreground leading-relaxed">
+                {skill.description}
+              </p>
             </Card>
           ))}
         </div>
 
         <div className="mt-16 p-8 rounded-2xl bg-card border border-border card-glow">
-          <h3 className="text-2xl font-bold mb-4">{t('about.experienceTitle')}</h3>
+          <h3 className="text-2xl font-bold mb-4">
+            {t('about.experienceTitle')}
+          </h3>
           <p className="text-muted-foreground leading-relaxed">
             {t('about.experienceDesc')}
           </p>
