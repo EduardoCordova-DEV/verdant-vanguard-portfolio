@@ -1,6 +1,8 @@
 import { Github, Linkedin, Mail, Heart } from 'lucide-react'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const Footer = () => {
+  const { t } = useLanguage()
   const currentYear = new Date().getFullYear()
 
   return (
@@ -12,8 +14,8 @@ const Footer = () => {
             <span>© {currentYear} Eduardo Cordova & Loveable</span>
             <span>•</span>
             <span className="flex items-center gap-1">
-              Hecho con <Heart className="w-4 h-4 text-primary fill-primary" />{' '}
-              y código
+              {t('footer.madeWith')} <Heart className="w-4 h-4 text-primary fill-primary" />{' '}
+              {t('footer.andCode')}
             </span>
           </div>
 

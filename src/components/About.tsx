@@ -1,49 +1,31 @@
 import { Card } from './ui/card'
 import { Code2, Bot, Disc3, SquareTerminal } from 'lucide-react'
+import { useLanguage } from '@/contexts/LanguageContext'
+import profileImage from '@/assets/images/profile.jpg'
 
 const About = () => {
+  const { t } = useLanguage()
+  
   const skills = [
     {
       icon: Code2,
-      title: 'Desarrollo Frontend',
-      description: (
-        <span>
-          <strong>React</strong>, <strong>TypeScript</strong> y frameworks
-          modernos para crear interfaces interactivas y responsivas.
-        </span>
-      ),
+      title: t('about.frontend'),
+      description: t('about.frontendDesc'),
     },
     {
       icon: SquareTerminal,
-      title: 'Desarrollo Backend',
-      description: (
-        <span>
-          Conocimientos en <strong>Node.js, .NET/C#, PHP (Laravel),</strong>{' '}
-          Especializado en la construcción de APIs y sistemas backend
-          eficientes.
-        </span>
-      ),
+      title: t('about.backend'),
+      description: t('about.backendDesc'),
     },
     {
       icon: Bot,
-      title: 'Aplicación de IA',
-      description: (
-        <span>
-          Apasionado por la aplicación de <strong>IA</strong> en el ciclo de
-          desarrollo, utilizando herramientas como{' '}
-          <strong>ChatGPT, GitHub Copilot y Lovable</strong>.
-        </span>
-      ),
+      title: t('about.ai'),
+      description: t('about.aiDesc'),
     },
     {
       icon: Disc3,
-      title: 'DJ / Producción Músical',
-      description: (
-        <span>
-          Sueño con convertirme en un <strong>DJ/Productor Músical</strong>, más
-          allá de mi vida profesional, la música es mi pasión.
-        </span>
-      ),
+      title: t('about.music'),
+      description: t('about.musicDesc'),
     },
   ]
 
@@ -55,12 +37,20 @@ const About = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Sobre <span className="text-gradient">mí</span>
+            {t('about.title')} <span className="text-gradient">{t('about.titleHighlight')}</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Apasionado por la tecnología y el desarrollo web, me especializo en
-            convertir ideas en soluciones digitales elegantes y funcionales.
-          </p>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-8">
+            <div className="relative w-48 h-48 rounded-full overflow-hidden border-4 border-primary/20 card-glow">
+              <img 
+                src={profileImage} 
+                alt="Eduardo Cordova" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <p className="text-muted-foreground text-lg max-w-2xl">
+              {t('about.description')}
+            </p>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
@@ -73,26 +63,15 @@ const About = () => {
                 <skill.icon className="w-6 h-6 text-primary" />
               </div>
               <h3 className="text-xl font-semibold mb-2">{skill.title}</h3>
-              <p className="text-muted-foreground">{skill.description}</p>
+              <p className="text-muted-foreground leading-relaxed">{skill.description}</p>
             </Card>
           ))}
         </div>
 
         <div className="mt-16 p-8 rounded-2xl bg-card border border-border card-glow">
-          <h3 className="text-2xl font-bold mb-4">Mi experiencia</h3>
+          <h3 className="text-2xl font-bold mb-4">{t('about.experienceTitle')}</h3>
           <p className="text-muted-foreground leading-relaxed">
-            {' '}
-            <span className="text-primary font-semibold">
-              Ingeniero en Sistemas Inteligentes
-            </span>{' '}
-            con experiencia en aplicaciones web y de escritorio, tanto en
-            frontend como en backend. Especializado en tecnologías como{' '}
-            <span className="text-primary font-semibold">
-              .NET, Angular, PHP, React y Node.js,
-            </span>{' '}
-            con enfoque en soluciones escalables y optimización del rendimiento.
-            Hábil para resolver problemas complejos y colaborar eficazmente en
-            equipo para lograr resultados eficientes y orientados al usuario.
+            {t('about.experienceDesc')}
           </p>
         </div>
       </div>

@@ -1,7 +1,10 @@
 import { GraduationCap, Award } from 'lucide-react'
 import { Card } from './ui/card'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const Education = () => {
+  const { t } = useLanguage()
+  
   const educationData = [
     {
       degree: 'Ingeniería en Sistemas Inteligentes',
@@ -31,10 +34,10 @@ const Education = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-gradient">Formación</span>
+            <span className="text-gradient">{t('education.title')}</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            Mi camino académico y certificaciones profesionales
+            {t('education.subtitle')}
           </p>
         </div>
 
@@ -73,7 +76,7 @@ const Education = () => {
               <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                 <Award className="w-5 h-5 text-primary" />
               </div>
-              <h3 className="text-2xl font-bold">Certificaciones</h3>
+              <h3 className="text-2xl font-bold">{t('education.certifications')}</h3>
             </div>
             <div className="grid md:grid-cols-2 gap-3">
               {certifications.map((cert, index) => (

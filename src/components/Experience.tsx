@@ -1,8 +1,11 @@
 import { Briefcase, MapPin } from 'lucide-react'
 import { Card } from './ui/card'
 import { Badge } from './ui/badge'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const Experience = () => {
+  const { t } = useLanguage()
+  
   const experiences = [
     {
       position: 'Desarrollador de Software',
@@ -46,10 +49,10 @@ const Experience = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Experiencia <span className="text-gradient">Laboral</span>
+            {t('experience.title')} <span className="text-gradient">{t('experience.titleHighlight')}</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            Mi trayectoria profesional en el desarrollo web
+            {t('experience.subtitle')}
           </p>
         </div>
 

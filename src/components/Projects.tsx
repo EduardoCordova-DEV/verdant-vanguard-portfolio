@@ -10,6 +10,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { ExternalLink, Github } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 import productionLineImg from '../assets/images/production-line.jpeg'
 import hospitalDashboardImg from '../assets/images/hospital-dashboard.jpg'
@@ -48,15 +49,17 @@ const projects = [
 ]
 
 const Projects = () => {
+  const { t } = useLanguage()
+  
   return (
     <section className="py-20 px-4 bg-background" id="projects">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12 animate-fade-in">
           <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-            Proyectos Destacados
+            {t('projects.title')}
           </h2>
           <p className="text-muted-foreground text-lg">
-            Explora algunos de mis trabajos
+            {t('projects.subtitle')}
           </p>
         </div>
 
@@ -97,7 +100,7 @@ const Projects = () => {
 
               <CardFooter className="flex gap-2">
                 <Button asChild variant="outline" size="sm" className="flex-1">
-                  <Link to={`/proyecto/${project.id}`}>Ver Detalles</Link>
+                  <Link to={`/proyecto/${project.id}`}>{t('projects.viewDetails')}</Link>
                 </Button>
 
                 {project.github && project.github.trim() !== '' && (
