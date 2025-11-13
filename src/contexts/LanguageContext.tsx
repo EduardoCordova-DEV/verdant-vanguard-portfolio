@@ -110,6 +110,10 @@ const translations = {
     // Footer
     'footer.madeWith': 'Hecho con',
     'footer.andCode': 'y código',
+    
+    // Team
+    'team.developer': 'Desarrollador',
+    'team.developers': 'Desarrolladores',
   },
   en: {
     // Hero
@@ -212,6 +216,10 @@ const translations = {
     // Footer
     'footer.madeWith': 'Made with',
     'footer.andCode': 'and code',
+    
+    // Team
+    'team.developer': 'Developer',
+    'team.developers': 'Developers',
   },
 }
 

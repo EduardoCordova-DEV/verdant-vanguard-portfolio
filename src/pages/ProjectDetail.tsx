@@ -42,7 +42,7 @@ const ProjectDetail = () => {
         github: '',
         demo: '',
         date: '2023',
-        team: t('experience.period') === '2022 - 2024' ? '2 Desarrolladores' : '2 Developers',
+        team: `2 ${t('team.developers')}`,
         features: [
           t('project.gm.feature1'),
           t('project.gm.feature2'),
@@ -64,7 +64,7 @@ const ProjectDetail = () => {
         github: '',
         demo: '',
         date: '2024',
-        team: t('experience.period') === '2022 - 2024' ? '5 Desarrolladores' : '5 Developers',
+        team: `5 ${t('team.developers')}`,
         features: [
           t('project.hospital.feature1'),
           t('project.hospital.feature2'),
@@ -85,7 +85,7 @@ const ProjectDetail = () => {
         github: '',
         demo: '',
         date: '2023',
-        team: t('experience.period') === '2022 - 2024' ? '1 Desarrollador' : '1 Developer',
+        team: `1 ${t('team.developer')}`,
         features: [
           t('project.bentho.feature1'),
           t('project.bentho.feature2'),
