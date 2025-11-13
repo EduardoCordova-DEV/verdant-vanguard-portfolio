@@ -42,13 +42,17 @@ All colors MUST be HSL.
     --radius: 0.75rem;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(142 76% 36% / 0.1), hsl(142 76% 45% / 0.05));
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(142 76% 36% / 0.1),
+      hsl(142 76% 45% / 0.05)
+    );
     --gradient-hero: linear-gradient(180deg, hsl(0 0% 98%), hsl(0 0% 95%));
-    
+
     /* Shadows */
     --shadow-glow: 0 0 30px hsl(142 76% 36% / 0.15);
     --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.1);
-    
+
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -86,9 +90,13 @@ All colors MUST be HSL.
     --ring: 142 76% 36%;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(142 76% 36% / 0.1), hsl(142 76% 45% / 0.05));
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(142 76% 36% / 0.1),
+      hsl(142 76% 45% / 0.05)
+    );
     --gradient-hero: linear-gradient(180deg, hsl(220 15% 9%), hsl(220 15% 12%));
-    
+
     /* Shadows */
     --shadow-glow: 0 0 30px hsl(142 76% 36% / 0.15);
     --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.4);
@@ -104,7 +112,12 @@ All colors MUST be HSL.
     @apply bg-background text-foreground font-sans antialiased;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-bold tracking-tight;
   }
 }
