@@ -16,40 +16,38 @@ import productionLineImg from '../assets/images/production-line.jpeg'
 import hospitalDashboardImg from '../assets/images/hospital-dashboard.jpg'
 import benthoImg from '../assets/images/bentho.jpg'
 
-const projects = [
-  {
-    id: 'gm-trazabilidad',
-    title: 'GM Trazabilidad',
-    description:
-      'Aplicacion Web para la trazabilidad de la linea de producción.',
-    technologies: ['.NET', 'C#', 'Entity Framework', 'SQL'],
-    image: productionLineImg,
-    github: '',
-    demo: '',
-  },
-  {
-    id: 'dashboard-hospital',
-    title: 'Hospital Managment Dashboard',
-    description: 'Dashboard administrativo para hospital privado.',
-    technologies: ['Laravel', 'PHP', 'SQL', 'Bootstrap'],
-    image: hospitalDashboardImg,
-    github: '',
-    demo: '',
-  },
-  {
-    id: 'bentho-cotizador',
-    title: 'BenthoCotizador',
-    description:
-      'Aplicación Web de generación de cotizaciones automaticas para Bentho Automation.',
-    technologies: ['Laravel', 'PHP', 'SQL'],
-    image: benthoImg,
-    github: '',
-    demo: '',
-  },
-]
-
 const Projects = () => {
   const { t } = useLanguage()
+  
+  const projects = [
+    {
+      id: 'gm-trazabilidad',
+      title: t('project.gm.title'),
+      description: t('project.gm.description'),
+      technologies: ['.NET', 'C#', 'Entity Framework', 'SQL'],
+      image: productionLineImg,
+      github: '',
+      demo: '',
+    },
+    {
+      id: 'dashboard-hospital',
+      title: t('project.hospital.title'),
+      description: t('project.hospital.description'),
+      technologies: ['Laravel', 'PHP', 'SQL', 'Bootstrap'],
+      image: hospitalDashboardImg,
+      github: '',
+      demo: '',
+    },
+    {
+      id: 'bentho-cotizador',
+      title: t('project.bentho.title'),
+      description: t('project.bentho.description'),
+      technologies: ['Laravel', 'PHP', 'SQL'],
+      image: benthoImg,
+      github: '',
+      demo: '',
+    },
+  ]
   
   return (
     <section className="py-20 px-4 bg-background" id="projects">

@@ -8,7 +8,7 @@ const Experience = () => {
   
   const experiences = [
     {
-      position: 'Desarrollador de Software',
+      position: t('experience.position'),
       company: (
         <h2>
           <a
@@ -16,19 +16,13 @@ const Experience = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Bentho Automation
+            {t('experience.company')}
           </a>
         </h2>
       ),
-      location: 'San Luis Potosí, México',
-      period: '2022 - 2024',
-      description: (
-        <span>
-          Desarrollo e implementación de aplicaciones web y de escritorio a
-          medida, optimizando procesos internos y ofreciendo soluciones
-          tecnológicas eficientes para empresas privadas.
-        </span>
-      ),
+      location: t('experience.location'),
+      period: t('experience.period'),
+      description: <span>{t('experience.description')}</span>,
       technologies: [
         'HTML',
         'CSS',

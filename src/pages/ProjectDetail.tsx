@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -6,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import { ArrowLeft, Github, ExternalLink, Calendar, Users } from 'lucide-react'
 import Footer from '@/components/Footer'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 import productionLineImg from '../assets/images/production-line.jpeg'
 import hospitalDashboardImg from '../assets/images/hospital-dashboard.jpg'
@@ -26,141 +26,92 @@ interface Project {
   challenges: string[]
 }
 
-// Este objeto debería estar en un archivo separado para reutilizarlo
-const projectsData: Record<string, Project> = {
-  'gm-trazabilidad': {
-    title: 'GM Trazabilidad',
-    description:
-      'Aplicacion Web para la trazabilidad de la linea de producción.',
-    longDescription: (
-      <span>
-        Aplicación web para el escaneo de piezas en una línea de producción para
-        la industria automotriz, garantizando precisión y eficiencia en el
-        proceso de fabricación. Se implemento un sistema de seguridad para el
-        inicio de sesión mediante hardware de detección de huellas dactilares,
-        mejorando la autenticación y el control de acceso. Optimización del
-        flujo de trabajo en la línea de producción integrando tecnologías de
-        escaneo avanzadas. Colaboré con equipos multidisciplinarios para
-        asegurar una integración fluida de hardware/software y una experiencia
-        de usuario segura.
-      </span>
-    ),
-    technologies: ['.NET', 'C#', 'Entity Framework', 'SQL'],
-    image: productionLineImg,
-    gallery: [],
-    github: '',
-    demo: '',
-    date: '2023',
-    team: '2 Desarrolladores',
-    features: [
-      'Sistema de autenticación y autorización por medio de datos biométricos',
-      'Recepción de entradas por medio de escanerés',
-      'Panel de administración completo',
-      'Gestión de línea de producción en tiempo real',
-    ],
-    challenges: [
-      'Implementación del hardware de datos biometrícos.',
-      'Implementación del hardware para el escaneo de producto.',
-    ],
-  },
-  'dashboard-hospital': {
-    title: 'Dashboard Profesional',
-    description: 'Dashboard administrativo para hospital privado.',
-    longDescription: (
-      <span>
-        Se desarrollo una aplicación web integral para la gestión de un hospital
-        privado, incorporando módulos esenciales para la operación médica y
-        administrativa. Entre sus principales funcionalidades se incluyen:
-        <ul>
-          <li>
-            • Registro y gestión de pacientes y médicos, facilitando el control
-            tanto de información personal como de datos profesionales.
-          </li>
-          <li>
-            • Administración de inventarios médicos para asegurar la
-            disponibilidad y trazabilidad de suministros y recursos.
-          </li>
-          <li>
-            • Gestión de expedientes clínicos con acceso seguro a historiales
-            médicos y documentación relacionada.
-          </li>
-          <li>
-            • Generación de reportes y visualización de datos para apoyar la
-            toma de decisiones estratégicas.
-          </li>
-          <li>
-            • Gestión de pagos, facturación y control de caja con seguimiento
-            preciso de las transacciones financieras.
-          </li>
-          <li>
-            • Manejo de historiales administrativos y médicos, permitiendo una
-            atención continua y optimizada al paciente.
-          </li>
-        </ul>
-      </span>
-    ),
-    technologies: ['Laravel', 'SQL', 'Bootstrap'],
-    image: hospitalDashboardImg,
-    gallery: [],
-    github: '',
-    demo: '',
-    date: '2024',
-    team: '5 Desarrolladores',
-    features: [
-      'Gestión de pacientes y médicos',
-      'Control de inventarios y suministros médicos',
-      'Expedientes clínicos y acceso seguro a historial',
-      'Generación de reportes e indicadores clave',
-      'Gestión de pagos, facturas y caja',
-      'Trazabilidad de historiales administrativos y médicos',
-    ],
-    challenges: ['Estructuración de la base de datos relacional.'],
-  },
-  'bentho-cotizador': {
-    title: 'BenthoCotizador',
-    description:
-      'Aplicación Web de generación de cotizaciones automaticas para Bentho Automation.',
-    longDescription: (
-      <span>
-        Desarrollé una aplicación web interna para la generación automática de
-        cotizaciones especializadas para clientes, optimizando el flujo
-        comercial y la atención al cliente. La solución permitió agilizar el
-        proceso de elaboración de cotizaciones, reducir significativamente los
-        tiempos de respuesta y mejorar la experiencia del usuario final.
-      </span>
-    ),
-    technologies: ['Laravel', 'PHP', 'SQL'],
-    image: benthoImg,
-    gallery: [],
-    github: '',
-    demo: '',
-    date: '2023',
-    team: '1 Desarrollador',
-    features: [
-      'Generación automática de cotizaciones personalizadas',
-      'Disminución del tiempo de respuesta al cliente',
-      'Interfaz intuitiva y fácil de usar',
-      'Integración con sistemas internos y bases de datos',
-      'Mejora en la eficiencia del proceso de ventas',
-      'Incremento en la satisfacción del cliente',
-    ],
-    challenges: ['Optimización en la consulta de lista de productos +100,000'],
-  },
-}
-
 const ProjectDetail = () => {
   const { id } = useParams()
-  const project = id ? projectsData[id] : null
+  const { t } = useLanguage()
+
+  const getProjectData = (projectId: string): Project | null => {
+    const projectMap: Record<string, () => Project> = {
+      'gm-trazabilidad': () => ({
+        title: t('project.gm.title'),
+        description: t('project.gm.description'),
+        longDescription: <span>{t('project.gm.longDescription')}</span>,
+        technologies: ['.NET', 'C#', 'Entity Framework', 'SQL'],
+        image: productionLineImg,
+        gallery: [],
+        github: '',
+        demo: '',
+        date: '2023',
+        team: t('experience.period') === '2022 - 2024' ? '2 Desarrolladores' : '2 Developers',
+        features: [
+          t('project.gm.feature1'),
+          t('project.gm.feature2'),
+          t('project.gm.feature3'),
+          t('project.gm.feature4'),
+        ],
+        challenges: [
+          t('project.gm.challenge1'),
+          t('project.gm.challenge2'),
+        ],
+      }),
+      'dashboard-hospital': () => ({
+        title: t('project.hospital.title'),
+        description: t('project.hospital.description'),
+        longDescription: <span>{t('project.hospital.longDescription')}</span>,
+        technologies: ['Laravel', 'SQL', 'Bootstrap'],
+        image: hospitalDashboardImg,
+        gallery: [],
+        github: '',
+        demo: '',
+        date: '2024',
+        team: t('experience.period') === '2022 - 2024' ? '5 Desarrolladores' : '5 Developers',
+        features: [
+          t('project.hospital.feature1'),
+          t('project.hospital.feature2'),
+          t('project.hospital.feature3'),
+          t('project.hospital.feature4'),
+          t('project.hospital.feature5'),
+          t('project.hospital.feature6'),
+        ],
+        challenges: [t('project.hospital.challenge1')],
+      }),
+      'bentho-cotizador': () => ({
+        title: t('project.bentho.title'),
+        description: t('project.bentho.description'),
+        longDescription: <span>{t('project.bentho.longDescription')}</span>,
+        technologies: ['Laravel', 'PHP', 'SQL'],
+        image: benthoImg,
+        gallery: [],
+        github: '',
+        demo: '',
+        date: '2023',
+        team: t('experience.period') === '2022 - 2024' ? '1 Desarrollador' : '1 Developer',
+        features: [
+          t('project.bentho.feature1'),
+          t('project.bentho.feature2'),
+          t('project.bentho.feature3'),
+          t('project.bentho.feature4'),
+          t('project.bentho.feature5'),
+          t('project.bentho.feature6'),
+        ],
+        challenges: [t('project.bentho.challenge1')],
+      }),
+    }
+
+    return projectMap[projectId] ? projectMap[projectId]() : null
+  }
+
+  const project = id ? getProjectData(id) : null
 
   if (!project) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Proyecto no encontrado</h1>
+          <h1 className="text-4xl font-bold mb-4">{t('projectDetail.notFound')}</h1>
           <Button asChild>
             <Link to="/">
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Volver al inicio
+              {t('projectDetail.backToHome')}
             </Link>
           </Button>
         </div>
@@ -184,7 +135,7 @@ const ProjectDetail = () => {
             <Button asChild variant="ghost" className="mb-4">
               <Link to="/">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Volver
+                {t('projectDetail.back')}
               </Link>
             </Button>
             <h1 className="text-5xl font-bold mb-4 animate-fade-in">
@@ -209,7 +160,7 @@ const ProjectDetail = () => {
               <Card>
                 <CardContent className="pt-6">
                   <h2 className="text-2xl font-bold mb-4">
-                    Descripción del Proyecto
+                    {t('projectDetail.descriptionTitle')}
                   </h2>
                   <p className="text-muted-foreground leading-relaxed">
                     {project.longDescription}
@@ -220,7 +171,7 @@ const ProjectDetail = () => {
               <Card>
                 <CardContent className="pt-6">
                   <h2 className="text-2xl font-bold mb-4">
-                    Características Principales
+                    {t('projectDetail.featuresTitle')}
                   </h2>
                   <ul className="space-y-2">
                     {project.features.map((feature: string, index: number) => (
@@ -235,7 +186,7 @@ const ProjectDetail = () => {
 
               <Card>
                 <CardContent className="pt-6">
-                  <h2 className="text-2xl font-bold mb-4">Desafíos Técnicos</h2>
+                  <h2 className="text-2xl font-bold mb-4">{t('projectDetail.challengesTitle')}</h2>
                   <ul className="space-y-2">
                     {project.challenges.map(
                       (challenge: string, index: number) => (
@@ -255,7 +206,7 @@ const ProjectDetail = () => {
                   <Card>
                     <CardContent className="pt-6">
                       <h2 className="text-2xl font-bold mb-4">
-                        Galería de Imágenes
+                        {t('projectDetail.galleryTitle')}
                       </h2>
                       <div className="grid grid-cols-2 gap-4">
                         {project.gallery.map((img: string, index: number) => (
@@ -271,7 +222,7 @@ const ProjectDetail = () => {
                                 />
                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
                                   <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    Click para ampliar
+                                    {t('projectDetail.clickToEnlarge')}
                                   </span>
                                 </div>
                               </div>
@@ -297,7 +248,7 @@ const ProjectDetail = () => {
                 <CardContent className="pt-6 space-y-4">
                   <div>
                     <h3 className="text-sm font-semibold text-muted-foreground mb-2">
-                      Tecnologías
+                      {t('projectDetail.technologiesTitle')}
                     </h3>
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech: string) => (
@@ -310,13 +261,13 @@ const ProjectDetail = () => {
 
                   <div className="flex items-center gap-2 text-sm">
                     <Calendar className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-muted-foreground">Año:</span>
+                    <span className="text-muted-foreground">{t('projectDetail.yearLabel')}</span>
                     <span className="font-semibold">{project.date}</span>
                   </div>
 
                   <div className="flex items-center gap-2 text-sm">
                     <Users className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-muted-foreground">Equipo:</span>
+                    <span className="text-muted-foreground">{t('projectDetail.teamLabel')}</span>
                     <span className="font-semibold">{project.team}</span>
                   </div>
                 </CardContent>
@@ -326,7 +277,7 @@ const ProjectDetail = () => {
                 <Card>
                   <CardContent className="pt-6 space-y-3">
                     <h3 className="text-sm font-semibold text-muted-foreground mb-3">
-                      Enlaces
+                      {t('projectDetail.linksTitle')}
                     </h3>
                     {project.github && project.github.trim() !== '' && (
                       <Button asChild className="w-full">
@@ -336,7 +287,7 @@ const ProjectDetail = () => {
                           rel="noopener noreferrer"
                         >
                           <ExternalLink className="mr-2 h-4 w-4" />
-                          Ver Demo
+                          {t('projectDetail.viewDemo')}
                         </a>
                       </Button>
                     )}
@@ -348,7 +299,7 @@ const ProjectDetail = () => {
                           rel="noopener noreferrer"
                         >
                           <Github className="mr-2 h-4 w-4" />
-                          Ver Código
+                          {t('projectDetail.viewCode')}
                         </a>
                       </Button>
                     )}

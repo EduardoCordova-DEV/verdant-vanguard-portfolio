@@ -7,19 +7,11 @@ const Education = () => {
   
   const educationData = [
     {
-      degree: 'Ingeniería en Sistemas Inteligentes',
-      institution: 'Universidad Autónoma de San Luis Potosí / UASLP',
-      period: '2018 - 2023',
-      description:
-        'Formación integral en Ciencias de la Computación e Inteligencia Artificial',
+      degree: t('education.degree'),
+      institution: t('education.institution'),
+      period: t('education.period'),
+      description: t('education.description'),
     },
-    // {
-    //   degree: 'React Dev',
-    //   institution: 'React: De cero a experto - Edición 2025 / Udemy',
-    //   period: '2025',
-    //   description:
-    //     'Context API, MERN, Hooks, Firestore, JWT, Testing, Autenticaciones, Despliegues, AI, CRUD, Logs, MUI, Multiple Routers..',
-    // },
   ]
 
   const certifications = [
