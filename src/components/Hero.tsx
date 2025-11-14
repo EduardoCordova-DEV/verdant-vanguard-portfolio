@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Code2 } from 'lucide-react'
+import { Github, Linkedin, Mail, Code2, MessageCircle } from 'lucide-react'
 import { Button } from './ui/button'
 import { useTypewriter } from '@/hooks/useTypewriter'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -70,20 +70,37 @@ const Hero = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <Button
-            size="lg"
-            className="bg-primary hover:bg-primary-glow text-primary-foreground font-semibold px-8 mt-4"
-            asChild
-          >
-            <a
-              href="https://flowcv.com/resume/8hhshqoj7bd4"
-              target="_blank"
-              rel="noopener noreferrer"
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <Button
+              size="lg"
+              className="bg-primary hover:bg-primary-glow text-primary-foreground font-semibold px-8"
+              asChild
             >
-              {t('hero.cv')}
-            </a>
-          </Button>
+              <a
+                href="https://flowcv.com/resume/8hhshqoj7bd4"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t('hero.cv')}
+              </a>
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold px-8 gap-2"
+              asChild
+            >
+              <a
+                href="https://wa.me/YOUR_PHONE_NUMBER"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MessageCircle className="w-5 h-5" />
+                {t('hero.whatsapp')}
+              </a>
+            </Button>
+          </div>
         </div>
       </div>
 

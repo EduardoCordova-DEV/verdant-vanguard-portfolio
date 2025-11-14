@@ -16,6 +16,7 @@ const translations = {
     'hero.name': 'Eduardo Cordova',
     'hero.subtitle': 'Ingeniero en Sistemas Inteligentes, especializado en el Desarrollo Web.',
     'hero.cv': 'Mi CV',
+    'hero.whatsapp': 'Contactar por WhatsApp',
     
     // About
     'about.title': 'Sobre',
@@ -122,6 +123,7 @@ const translations = {
     'hero.name': 'Eduardo Cordova',
     'hero.subtitle': 'Intelligent Systems Engineer, specialized in Web Development.',
     'hero.cv': 'My Resume',
+    'hero.whatsapp': 'Contact via WhatsApp',
     
     // About
     'about.title': 'About',
